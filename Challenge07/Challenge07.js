@@ -83,23 +83,34 @@ let cvs = [
 
 // ------------------------
 const cvFormatter = (arr) => {
-    let fullName;
-    // write your code here
-    let arr1=[];
-    for (const key in cvs) {
-        if(cvs[key].yearsOfExperience>1){
-            if(cvs[key].lastName!=null){
-                fullName=cvs.firstName+" "+cvs.lastName;
+    let arr2 = [];
+    arr.forEach((item, i) => {
+        if (item.yearsOfExperience > 1) {
+            if (item.firstName === null || item.lastName === null) {
+                if (!item.firstName) {
+                    item["fullName"] = item.lastName;
+                }
+                else {
+                    item["fullName"] = item.firstName;
+                }
+
+
+            } else {
+                console.log(item);
+                item["fullName"] = item.firstName + " " + item.lastName;
             }
-            else
-            fullName=cvs.firstName;
+            delete item.lastName;
+            delete item.firstName;
+            delete item.yearsOfExperience;
+        } else {
+            arr2.push(i)
         }
-        let arr1=[] ;
-        arr1.push({"fullname" : fullName});
-    }
-    return arr1  ;
+    })
+    arr2.forEach(j => { arr.splice(j, 1) })
+    return arr;
+}
     
-};
+
 
 // 3) ---------------------
 //
@@ -246,6 +257,9 @@ let data = {
 //  1- This is not the exact data you will be getting every time and the solution should be dynamic
 //  2- You need to round the average to the nearest lower number 
 
+const classesAvg = (data) => {
+    // write your code here
+};
 
 
-module.exports = { objLat, cvFormatter, applicationsStatics  };
+module.exports = { objLat, cvFormatter, applicationsStatics ,  classesAvg };
