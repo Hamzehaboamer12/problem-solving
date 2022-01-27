@@ -4,8 +4,7 @@
 // Challenge 01
 
 // Important:
-
-
+// To solve these challenges you have use (for in ,for of) or (Object.keys ,Object.values, Object.entries )
 // Resources:
 // for in : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
 // for of : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
@@ -28,6 +27,19 @@
 
 const customerAndAge = (obj) => {
   // write your code here
+
+
+
+
+  let arr=[] ;
+  for (const property in obj) {
+      arr.push((`Customer Name :${property} , Age :${obj[property]}`));
+   
+  }
+  return arr;
+
+  
+
 };
 
 // -------------------------------------------------------------------------------------------------------
@@ -55,6 +67,15 @@ const customerAndAge = (obj) => {
 
 const getEntries = (obj) => {
   // write your code here
+
+
+let arr = [];
+for (const [key, value] of Object.entries(obj)) {
+    arr.push(`${key}: ${value}`)
+
+    // console.log(`${key}: ${value}`);
+  }
+  return arr;
 };
 
 // -------------------------------------------------------------------------------------------------------
